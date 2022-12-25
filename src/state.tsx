@@ -1,18 +1,38 @@
+import {renderEntireTree} from "./render";
+
 export const state = {
     commentsTotal: 0,
+    newUserName:'',
+    newCommentText:'',
     commentItem: [
         {
-            username: 'First user',
-            message: 'It is my first message from the state',
+            username: '',
+            message: '',
             isShown: true
         }
     ],
-    addItem: function () {
+    addCommentItem: function () {
+
         let newComment = {
-            username: 'some name',
-            message: 'some text',
+            username: state.newUserName,
+            message: state.newCommentText,
             isShown: true
         }
-        this.commentItem.push(newComment);
-    }
+        state.commentItem.push(newComment);
+        state.commentsTotal++;
+        renderEntireTree(state);
+        state.newUserName = '';
+        state.newCommentText = '';
+    },
+
+    updateNewUserName:function (name:string){
+        state.newUserName = name;
+    },
+
+    updateNewCommentText:function (text:string){
+        state.newCommentText = text;
+
+    },
+
+
 }
