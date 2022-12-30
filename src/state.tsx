@@ -1,19 +1,19 @@
 import {renderEntireTree} from "./render";
 
 export const state = {
-    commentsTotal: 0,
+    commentsTotal: 1,
     newUserName:'',
     newCommentText:'',
     commentItem: [
         {
-            username: '',
-            message: '',
+            username: 'Initial Username',
+            message: 'Initial Message',
             isShown: true
         }
     ],
     addCommentItem: function () {
 
-        let newComment = {
+        const newComment = {
             username: state.newUserName,
             message: state.newCommentText,
             isShown: true
@@ -25,14 +25,17 @@ export const state = {
         state.newCommentText = '';
     },
 
-    updateNewUserName:function (name:string){
-        state.newUserName = name;
-    },
-
     updateNewCommentText:function (text:string){
         state.newCommentText = text;
-
+        renderEntireTree(state)
     },
+
+    updateNewUserName:function (name:string){
+        state.newUserName = name;
+        renderEntireTree(state)
+    },
+
+
 
 
 }

@@ -10,6 +10,7 @@ export let renderEntireTree = (state:any)=>{
     root.render(
         <React.StrictMode>
             <App state={state}/>
+
     </React.StrictMode>
 );
 }
